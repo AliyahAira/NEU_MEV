@@ -41,6 +41,7 @@ A web-based expert system that verifies student eligibility for enrollment based
    python app.py
 
 ### Project Structure
+```text
 NEUMEV/
 ├── app.py                # Main application
 ├── init_db.py            # Database initialization
@@ -49,6 +50,7 @@ NEUMEV/
 ├── static/
 │   └── style.css         # Custom styles
 └── templates/            # HTML templates
+```
 
 ### 💡 Usage Instructions
 
