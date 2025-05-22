@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="student-list-container">
+    <div class="header-row">
+        <h2>{{ college.name }} - Student List</h2>
+        <a href="{{ url_for('home') }}" class="btn back-btn">Back to Colleges</a>
+    </div>
+    
+    <div class="import-section">
+        <h3>Import Students</h3>
+        <form method="POST" enctype="multipart/form-data">
+            <input type="file" name="file" accept=".csv" required>
+            <button type="submit" class="btn import-btn">Import CSV</button>
+        </form>
+        <p class="hint">CSV format: name,student_id</p>
+    </div>
+    
+    <table class="student-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Student Name</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for student in students %}
+            <tr>
+                <td>{{ student.student_id }}</td>
+                <td>{{ student.name }}</td>
+                <td>
+                    <span class="status {% if student.is_eligible %}eligible{% else %}not-eligible{% endif %}">
+                        {% if student.is_eligible %}Eligible{% else %}Pending{% endif %}
+                    </span>
+                </td>
+                <td class="actions">
+                    {% if not student.is_eligible %}
+                        <a href="{{ url_for('verify_student', student_id=student.id) }}" class="btn verify-btn">Verify</a>
+                    {% endif %}
+                    <a href="{{ url_for('student_profile', student_id=student.id) }}" class="btn {% if student.is_eligible %}details-btn{% else %}profile-btn{% endif %}">
+                        {% if student.is_eligible %}Details{% else %}Profile{% endif %}
+                    </a>
+                </td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="4">No students found. Import students using CSV.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

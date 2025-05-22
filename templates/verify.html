@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="verification-form">
+    <h2>Verify Eligibility for {{ student.name }}</h2>
+    <p class="student-id">ID: {{ student.student_id }}</p>
+    
+    <form method="POST" class="eligibility-form">
+        <div class="form-section">
+            <h3>1. General Physical Examination</h3>
+            <label class="checkbox-label">
+                <input type="checkbox" name="physical_exam">
+                Medical Certificate (Good health, no contagious diseases)
+            </label>
+            <label class="checkbox-label">
+                <input type="checkbox" name="vital_signs">
+                Vital Signs Check (BP, pulse, height, weight, BMI)
+            </label>
+            <label class="checkbox-label">
+                <input type="checkbox" name="vision_test">
+                Vision Test (Normal or corrected vision)
+            </label>
+            <label class="checkbox-label">
+                <input type="checkbox" name="hearing_test">
+                Hearing Test (If required for program)
+            </label>
+        </div>
+        
+        <div class="form-section">
+            <h3>2. Laboratory Tests</h3>
+            <label class="checkbox-label">
+                <input type="checkbox" name="cbc_test">
+                Complete Blood Count (CBC)
+            </label>
+            <label class="checkbox-label">
+                <input type="checkbox" name="urinalysis">
+                Urinalysis
+            </label>
+            <label class="checkbox-label">
+                <input type="checkbox" name="drug_test">
+                Drug Test (If required)
+            </label>
+        </div>
+        
+        <div class="form-section">
+            <h3>3. Chest X-ray</h3>
+            <label class="checkbox-label">
+                <input type="checkbox" name="chest_xray">
+                Chest X-ray (Clear lungs)
+            </label>
+            <label class="checkbox-label">
+                <input type="checkbox" name="tb_screening">
+                TB Screening (Negative)
+            </label>
+        </div>
+        
+        <div class="form-section">
+            <h3>4. Vaccination Records</h3>
+            <label class="checkbox-label">
+                <input type="checkbox" name="hepatitis_b">
+                Hepatitis B
+            </label>
+            <label class="checkbox-label">
+                <input type="checkbox" name="mmr">
+                MMR (Measles, Mumps, Rubella)
+            </label>
+            <label class="checkbox-label">
+                <input type="checkbox" name="varicella">
+                Varicella (Chickenpox)
+            </label>
+            <label class="checkbox-label">
+                <input type="checkbox" name="tdap">
+                Tetanus-Diphtheria-Pertussis (Tdap)
+            </label>
+            <label class="checkbox-label">
+                <input type="checkbox" name="meningococcal">
+                Meningococcal Vaccine
+            </label>
+            <label class="checkbox-label">
+                <input type="checkbox" name="covid_vaccine">
+                COVID-19 Vaccine
+            </label>
+        </div>
+        
+        <div class="form-section">
+            <h3>5. Additional Requirements</h3>
+            <label class="checkbox-label">
+                <input type="checkbox" name="hiv_test">
+                HIV Test (If required)
+            </label>
+        </div>
+        
+        <div class="form-actions">
+            <button type="submit" class="btn submit-btn">Submit Verification</button>
+            <a href="{{ url_for('student_list', college_id=student.college_id) }}" class="btn cancel-btn">Cancel</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

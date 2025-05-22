@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="student-profile">
+    <div class="profile-header">
+        <h2>Student Profile</h2>
+        <a href="{{ url_for('student_list', college_id=student.college_id) }}" class="btn back-btn">Back to List</a>
+    </div>
+    
+    <div class="profile-info">
+        <div class="info-card">
+            <h3>Basic Information</h3>
+            <p><strong>Name:</strong> {{ student.name }}</p>
+            <p><strong>Student ID:</strong> {{ student.student_id }}</p>
+            <p><strong>College:</strong> {{ student.college.name }}</p>
+            <p><strong>Status:</strong> 
+                <span class="status {% if student.is_eligible %}eligible{% else %}not-eligible{% endif %}">
+                    {% if student.is_eligible %}Eligible to Enroll{% else %}Not Eligible{% endif %}
+                </span>
+            </p>
+        </div>
+        
+        <div class="requirements-card">
+            <h3>Verification Details</h3>
+            <div class="requirements-grid">
+                <div class="requirement {% if student.physical_exam %}met{% else %}not-met{% endif %}">
+                    Medical Certificate
+                </div>
+                <div class="requirement {% if student.vital_signs %}met{% else %}not-met{% endif %}">
+                    Vital Signs Check
+                </div>
+                <!-- Add all other requirements similarly -->
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
