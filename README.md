@@ -55,21 +55,25 @@ NEUMEV/
 ```
 
 ### 💡 Usage Instructions
+Import Students:
+- Prepare a CSV file with name, student_id columns
+- Upload via the college-specific page
 
-1. Import Students:
-- Prepare CSV file with name,student_id columns
-- Upload via college-specific page
+Verify Eligibility:
+-Click "Verify" on a student record
+-Complete the medical checklist
+-System auto-determines eligibility
 
-2. Verify Eligibility:
-- Click "Verify" on student record
-- Complete the medical checklist
-- System auto-determines eligibility
-  
-3. View Profiles:
-- Check detailed verification status
-- See missing requirements
+View Profiles:
+-Check detailed verification status
+-See missing requirements
 
-   
+Student Health Submission:
+-Each student is required to:
+-Upload a valid medical certificate
+-Upload a physical examination result
+-Uploads must be images (JPG/PNG) taken directly from their device camera — no PDF or document formats allowed
+-The image must clearly show the student's full name
    
    
 
