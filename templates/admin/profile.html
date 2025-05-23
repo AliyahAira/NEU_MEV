@@ -4,7 +4,7 @@
 <div class="student-profile">
     <div class="profile-header">
         <h2>Student Profile</h2>
-        <a href="{{ url_for('student_list', college_id=student.college_id) }}" class="btn back-btn">Back to List</a>
+        <a href="{{ url_for('admin_student_list', college_id=student.college_id) }}" class="btn back-btn">Back to List</a>
     </div>
     
     <div class="profile-info">
@@ -32,6 +32,24 @@
                 <!-- Add all other requirements similarly -->
             </div>
         </div>
+    </div>
+    
+    <div class="uploaded-files">
+        <h3>Uploaded Documents</h3>
+        {% if uploaded_files %}
+            <ul>
+                {% for file in uploaded_files %}
+                <li>
+                    <a href="{{ url_for('uploaded_file', filename=file.filename) }}" target="_blank">
+                        {{ file.filename }} ({{ file.file_type }})
+                    </a>
+                    <span class="upload-date">Uploaded on {{ file.upload_date.strftime('%Y-%m-%d') }}</span>
+                </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No documents uploaded by student.</p>
+        {% endif %}
     </div>
 </div>
 {% endblock %}

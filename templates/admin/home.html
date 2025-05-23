@@ -5,7 +5,7 @@
     <h2>Select a College</h2>
     <div class="college-grid">
         {% for college in colleges %}
-        <a href="{{ url_for('student_list', college_id=college.id) }}" class="college-card">
+        <a href="{{ url_for('admin_student_list', college_id=college.id) }}" class="college-card">
             <h3>{{ college.name }}</h3>
         </a>
         {% endfor %}

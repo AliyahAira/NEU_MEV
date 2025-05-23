@@ -1,4 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime
 
 db = SQLAlchemy()
 
@@ -52,3 +53,13 @@ class Student(db.Model):
             basic_requirements.append(self.vision_test)
             
         return all(basic_requirements)
+
+class UploadedFile(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    filename = db.Column(db.String(100), nullable=False)
+    filepath = db.Column(db.String(200), nullable=False)
+    file_type = db.Column(db.String(50), nullable=False)
+    upload_date = db.Column(db.DateTime, default=datetime.utcnow)
+    student_id = db.Column(db.Integer, db.ForeignKey('student.id'), nullable=False)
+    
+    student = db.relationship('Student', backref='uploaded_files')

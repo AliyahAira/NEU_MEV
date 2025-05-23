@@ -4,7 +4,7 @@
 <div class="student-list-container">
     <div class="header-row">
         <h2>{{ college.name }} - Student List</h2>
-        <a href="{{ url_for('home') }}" class="btn back-btn">Back to Colleges</a>
+        <a href="{{ url_for('admin_home') }}" class="btn back-btn">Back to Colleges</a>
     </div>
     
     <div class="import-section">
@@ -37,9 +37,9 @@
                 </td>
                 <td class="actions">
                     {% if not student.is_eligible %}
-                        <a href="{{ url_for('verify_student', student_id=student.id) }}" class="btn verify-btn">Verify</a>
+                        <a href="{{ url_for('admin_verify_student', student_id=student.id) }}" class="btn verify-btn">Verify</a>
                     {% endif %}
-                    <a href="{{ url_for('student_profile', student_id=student.id) }}" class="btn {% if student.is_eligible %}details-btn{% else %}profile-btn{% endif %}">
+                    <a href="{{ url_for('admin_student_profile', student_id=student.id) }}" class="btn {% if student.is_eligible %}details-btn{% else %}profile-btn{% endif %}">
                         {% if student.is_eligible %}Details{% else %}Profile{% endif %}
                     </a>
                 </td>

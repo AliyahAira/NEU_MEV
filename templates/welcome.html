@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="welcome-container">
+    <div class="welcome-card">
+        <h2>Welcome to College Enrollment System</h2>
+        <p>Please select your login type:</p>
+        
+        <div class="login-options">
+            <a href="{{ url_for('admin_home') }}" class="btn admin-btn">Login as Admin</a>
+            <a href="{{ url_for('student_dashboard', student_id='2023-003') }}" class="btn student-btn">Login as Student</a>
+        </div>
+        
+        <p class="note">Note: This is a demo system. No actual login required.</p>
+    </div>
+</div>
+{% endblock %}

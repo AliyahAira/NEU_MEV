@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="student-dashboard">
+    <div class="dashboard-header">
+        <h2>Student Dashboard</h2>
+        <p>Welcome, {{ student.name }} (ID: {{ student.student_id }})</p>
+    </div>
+    
+    <div class="status-card">
+        <h3>Enrollment Status</h3>
+        <p class="status {% if student.is_eligible %}eligible{% else %}not-eligible{% endif %}">
+            {% if student.is_eligible %}Eligible to Enroll{% else %}Pending Verification{% endif %}
+        </p>
+    </div>
+    
+    <div class="upload-section">
+        <h3>Upload Medical Documents</h3>
+        <a href="{{ url_for('student_upload', student_id=student.student_id) }}" class="btn upload-btn">
+            Upload New Document
+        </a>
+    </div>
+    
+    <div class="documents-list">
+        <h3>Your Uploaded Documents</h3>
+        {% if uploaded_files %}
+            <ul>
+                {% for file in uploaded_files %}
+                <li>
+                    <a href="{{ url_for('uploaded_file', filename=file.filename) }}" target="_blank">
+                        {{ file.filename }} ({{ file.file_type }})
+                    </a>
+                    <span class="upload-date">Uploaded on {{ file.upload_date.strftime('%Y-%m-%d') }}</span>
+                </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No documents uploaded yet.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
