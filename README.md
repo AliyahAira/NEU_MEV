@@ -38,7 +38,9 @@ A web-based expert system that verifies student eligibility for enrollment based
    pip install -r requirements.txt
 
 ### Running the Application
-   python app.py
+   - 🛠️RUN:
+     ```bash
+     python app.py
 
 ### Project Structure
 ```text
